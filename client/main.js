@@ -17,15 +17,9 @@ const players = [{
 }];
 
 const renderPlayers = function (playersList) {
-  let numbers = [{val: 1}, {val: 2}, {val:3}];
-
-  let newNumbers = numbers.map(function(number) {
-    return number.val - 1;
+  return playersList.map(function(player) {
+    return <p key={player._id}>{player.name} has {player.score} point(s).</p>;
   });
-
-  console.log(newNumbers);
-
-  return [<p key="1">1</p>, <p key="2">2</p>, <p key="3">3</p>];
 };
 
 Meteor.startup(function() {
@@ -36,7 +30,7 @@ Meteor.startup(function() {
     	  <h1>{title}</h1>
           <p> Hello { name }!</p> 
           <p> This </p > 
-          {renderPlayers()}
+          {renderPlayers(players)}
         </div>
     );
     ReactDOM.render(jsx, document.getElementById('app'));
