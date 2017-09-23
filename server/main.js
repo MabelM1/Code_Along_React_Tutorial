@@ -3,10 +3,27 @@ import {Players} from './../imports/api/players';
 
 Meteor.startup(() => {
   class Person {
-    constructor(name) {
+    constructor(name = 'Anonymous', age = 0) {
       this.name = name;
-    }    
+      this.age = age;
+    } 
+    getGreeting() {
+      return `Hi! I am ${this.name}.`;
+    }   
+      getPersonDescription() {
+      return `${this.name} is ${this.age} years old.`;
+    }
+
   }
 
-  let me = new Person();
+  class Employee extends Person {
+  	constructor(name, age, title) {
+      super(name, age);
+      this.title = title;
+    } 
+  }
+
+
+
+  let me = new Person('Jasmin');
 });
